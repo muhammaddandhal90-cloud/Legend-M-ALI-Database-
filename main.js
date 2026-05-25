@@ -1,4 +1,4 @@
-const API_ENDPOINT_URL = "https://sim-info-api.wasif-ali.workers.dev/?search=";
+const API_ENDPOINT_URL =  "https://sim-info-api.wasif-ali.workers.dev/?search=" . 
 let titleTapCounter = 0;
 let tapResetTimer = null;
 
