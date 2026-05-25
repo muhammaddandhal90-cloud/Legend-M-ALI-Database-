@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGEND M ALI DATABASE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-[#0b0f19] text-gray-100 min-h-screen flex flex-col justify-between overflow-x-hidden font-poppins">
+
+    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-x-72 transition-transform duration-300 bg-blue-600 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 border border-blue-400 text-sm font-medium">
+        <i class="fa-solid fa-bolt animate-bounce text-yellow-400"></i>
+        <span id="toastMessage">Action Triggered!</span>
+    </div>
+
+    <div id="mainInterface" class="flex-grow flex flex-col justify-between w-full">
+        <header class="w-full max-w-6xl mx-auto px-4 pt-10 text-center">
+            <h1 id="secretTitleTrigger" class="cyber-title text-3xl md:text-5xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mb-2 cursor-pointer select-none active:scale-95 transition-transform duration-100">
+                LEGEND M ALI DATABASE
+            </h1>
+            <p class="text-xs md:text-sm text-purple-400 tracking-widest uppercase font-semibold">
+                Advanced Real-Time SIM Information System
+            </p>
+        </header>
+
+        <main class="w-full max-w-4xl mx-auto px-4 py-8 flex-grow flex flex-col justify-center">
+            
+            <div class="glass-card rounded-2xl p-6 md:p-8 mb-8 border-slate-800 transition-all duration-300 hover:border-purple-500/30">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-blue-400 tracking-wide">
+                    <i class="fa-solid fa-server text-lg animate-pulse"></i> Query Records
+                </h2>
+                
+                <form id="searchForm" class="space-y-4">
+                    <div class="relative">
+                        <input type="text" id="cnicOrPhone" required
+                            placeholder="Enter Mobile Number (e.g. 03039628506) or CNIC" 
+                            class="glow-input w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-5 py-4 pl-12 text-gray-100 placeholder-gray-500 focus:outline-none transition-all duration-200 text-base">
+                        <i class="fa-solid fa-fingerprint absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl"></i>
+                    </div>
+                    
+                    <button type="submit" 
+                        class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 font-bold py-4 rounded-xl shadow-lg shadow-purple-500/20 active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 tracking-wider uppercase text-sm">
+                        <i class="fa-solid fa-database animate-pulse"></i> Execute Secure Query
+                    </button>
+                </form>
+            </div>
+
+            <div id="loader" class="hidden text-center my-8">
+                <div class="relative inline-block w-16 h-16">
+                    <div class="absolute inset-0 border-4 border-purple-500/20 rounded-full"></div>
+                    <div class="absolute inset-0 border-4 border-t-purple-500 border-r-transparent border-b-blue-500 border-l-transparent rounded-full animate-spin"></div>
+                </div>
+                <p class="text-sm text-gray-400 mt-3 tracking-widest font-mono uppercase">Connecting Gateway...</p>
+            </div>
+
+            <div id="resultCard" class="hidden glass-card rounded-2xl p-6 md:p-8 transition-all duration-500 mb-8">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-4 mb-6">
+                    <h3 id="resultHeader" class="text-lg font-bold flex items-center gap-2"></h3>
+                    <button type="button" id="clearResultsBtn" class="text-xs font-semibold bg-slate-800 hover:bg-slate-700 border border-slate-700 px-3 py-1.5 rounded-lg transition-colors">
+                        <i class="fa-solid fa-arrow-rotate-left mr-1"></i> Reset
+                    </button>
+                </div>
+                
+                <div id="resultData" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+
+            <div id="portfolioSection" class="hidden space-y-6">
+                <h2 class="text-xl font-bold flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 tracking-wide">
+                    <i class="fa-solid fa-cubes text-lg"></i> Admin Broadcast & System Projects
+                </h2>
+                <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </div>
+
+        </main>
+
+        <footer class="w-full max-w-6xl mx-auto px-4 pb-8">
+            <div class="glass-card rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 border-slate-800">
+                
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-tr from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center shadow-lg shadow-purple-500/30 font-orbitron font-bold text-xl text-white tracking-tighter">
+                        LMA
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-base text-gray-100 tracking-wide">Legend M Ali</h4>
+                        <p class="text-xs text-purple-400 font-medium">Database Architect & Web Engineer</p>
+                        <p class="text-[11px] text-gray-500 mt-0.5"><i class="fa-solid fa-shield-halved mr-1"></i> Secure Vercel Static Hosting Workspace</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-3 w-full md:w-auto">
+                    <a href="https://whatsapp.com/channel/0029Vb7gWw9Bfxo7dI5j0n06" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 px-6 py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-emerald-900/20 transition-all duration-200 hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Join Elite Channel
+                    </a>
+                    
+                    <a href="https://wa.me/923039628506" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-2 bg-slate-800/90 hover:bg-slate-700 border border-slate-700 px-6 py-3.5 rounded-xl text-sm font-bold transition-all duration-200 hover:-translate-y-0.5">
+                        <i class="fa-solid fa-headset text-emerald-400"></i> Contact Owner
+                    </a>
+                </div>
+
+            </div>
+            <p class="text-center text-[11px] text-gray-600 mt-4 tracking-wider">&copy; 2026 LEGEND M ALI. Powered by Cloudflare Workers & Vercel Edge Frameworks.</p>
+        </footer>
+    </div>
+
+    <div id="adminPanel" class="hidden w-full max-w-5xl mx-auto px-4 py-10 flex-grow flex flex-col justify-start">
+        
+        <div class="flex justify-between items-center mb-8 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+            <div class="flex items-center gap-3">
+                <span class="flex h-3 w-3 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                </span>
+                <h2 class="font-orbitron font-bold tracking-widest text-lg text-red-400">ROOT@LEGEND_M_ALI:~# Dashboard</h2>
+            </div>
+            <button id="exitAdminBtn" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold px-4 py-2 rounded-lg transition-colors">
+                <i class="fa-solid fa-right-from-bracket"></i> Close Shell
+            </button>
+        </div>
+
+        <div id="adminAuthGate" class="glass-card rounded-2xl p-8 max-w-md mx-auto w-full border-red-500/20 my-auto">
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-user-shield text-4xl text-red-500 mb-2"></i>
+                <h3 class="text-xl font-bold tracking-wide">Identity Check Required</h3>
+                <p class="text-xs text-gray-400 mt-1">Provide master password to unlock node controls</p>
+            </div>
+            
+            <form id="adminLoginForm" class="space-y-4">
+                <div class="relative">
+                    <input type="password" id="adminPasswordInput" required placeholder="Enter Master Token Key"
+                        class="glow-input w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 pl-11 text-center font-mono tracking-widest text-red-400 focus:outline-none">
+                    <i class="fa-solid fa-key absolute left-4 top-1/2 -translate-y-1/2 text-gray-600"></i>
+                </div>
+                <button type="submit" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-red-900/30 transition-all text-sm uppercase tracking-wider">
+                    Authenticate Session
+                </button>
+            </form>
+        </div>
+
+        <div id="adminDashboardContent" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-8 items-start w-full">
+            
+            <div class="lg:col-span-1 glass-card rounded-2xl p-6 border-blue-500/20">
+                <h3 class="text-lg font-bold mb-5 flex items-center gap-2 text-blue-400 border-b border-slate-800 pb-3">
+                    <i class="fa-solid fa-square-plus"></i> Launch Terminal Project
+                </h3>
+                
+                <form id="projectForm" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Project Visual Cover Image</label>
+                        <div class="flex flex-col gap-3">
+                            <input type="file" id="projectImageInput" accept="image/*" required class="hidden">
+                            <button type="button" id="customUploadBtn" class="w-full py-4 px-4 bg-slate-900 hover:bg-slate-850 border border-dashed border-slate-700 rounded-xl flex flex-col items-center justify-center gap-2 group transition-all">
+                                <i class="fa-solid fa-cloud-arrow-up text-2xl text-gray-500 group-hover:text-blue-400 transition-colors"></i>
+                                <span class="text-xs font-semibold text-gray-400 group-hover:text-gray-300">Choose Image File</span>
+                            </button>
+                            <div id="imagePreviewContainer" class="hidden relative w-full h-40 rounded-xl overflow-hidden border border-slate-800">
+                                <img id="imagePreview" src="" alt="Terminal Preview" class="w-full h-full object-cover">
+                                <button type="button" id="removePreviewBtn" class="absolute top-2 right-2 bg-black/70 hover:bg-red-600 h-7 w-7 rounded-full flex items-center justify-center text-xs text-white transition-colors">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Project Title Name</label>
+                        <input type="text" id="projectTitle" required placeholder="e.g., Premium SIM Locator Tool V3"
+                            class="glow-input w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Description Context Log</label>
+                        <textarea id="projectDesc" required rows="3" placeholder="Describe project features..."
+                            class="glow-input w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none resize-none"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">Redirect URL / Link Endpoint</label>
+                        <input type="url" id="projectLink" placeholder="https://example.com/target-node"
+                            class="glow-input w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none">
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white font-bold py-3 rounded-xl shadow-lg transition-all text-xs uppercase tracking-widest mt-2">
+                        Save to Active Nodes
+                    </button>
+                </form>
+            </div>
+
+            <div class="lg:col-span-2 glass-card rounded-2xl p-6 border-purple-500/20">
+                <div class="flex justify-between items-center mb-5 border-b border-slate-800 pb-3">
+                    <h3 class="text-lg font-bold flex items-center gap-2 text-purple-400">
+                        <i class="fa-solid fa-list-check"></i> Registered Deployments (<span id="nodeCount">0</span>)
+                    </h3>
+                    <button id="wipeAllNodes" class="text-[11px] font-bold text-red-400 hover:text-red-300 bg-red-950/30 hover:bg-red-950/60 border border-red-900/50 px-3 py-1.5 rounded-lg transition-colors">
+                        <i class="fa-solid fa-skull-crossbones mr-1"></i> Wipe Storage
+                    </button>
+                </div>
+
+                <div id="adminProjectList" class="space-y-4 max-h-[600px] overflow-y-auto pr-2"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./admin.js"></script>
+</body>
+</html>
